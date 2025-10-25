@@ -6,7 +6,7 @@ This tool uses Selenium to control a headless Firefox browser, methodically navi
 
 ## What it Does
 - Reads a simple text file of Steam Workshop IDs for **any game**.
-- For each ID, it constructs the correct Skymods URL using your specified **App ID**.
+- Constructs the correct Skymods URL using your specified **Base URL Template**.
 - Navigates the redirect chain, handles cookie banners, and closes ad tabs.
 - Waits for timers and clicks the download links, saving all files to an organized folder.
 
@@ -41,18 +41,25 @@ This tool uses Selenium to control a headless Firefox browser, methodically navi
 
 ## How to Use
 
-You must provide the game's **App ID** when running the script. You can find any game's App ID using sites like [SteamDB](https://steamdb.info/).
+This script is a universal tool. You must provide the **App ID** for the game and the **Base URL Template** for the specific Skymods site you are targeting.
 
-### Example: Downloading a Hearts of Iron IV Mod Collection
+### Step 1: Find the App ID and Base URL
 
-1.  **Find the App ID:** Search for "Hearts of Iron IV" on SteamDB. The App ID is **394360**.
+1.  **Find the App ID:** Use a site like [SteamDB](https://steamdb.info/) to find the numeric App ID for your game (e.g., CK3 is `1158310`, HOI4 is `394360`).
+2.  **Find the Base URL:** Go to Skymods and find the page for your game. Look at the URL structure. Your template must include `{mod_id}` as a placeholder for the workshop ID.
 
-2.  **Get the Mod IDs:** Go to a Workshop collection (like the "Road to 56" collection you found). Use a tool like [steamworkshopdownloader.io](https://steamworkshopdownloader.io/) to paste the collection URL. It will generate `workshop_download_item` commands for all mods. Copy just the final number (the Workshop ID) for each mod into your `hoi4_mods.txt` file.
+    *   **CK3:** `https://catalogue.smods.ru/?s={mod_id}&app={app_id}`
+    *   **HOI4:** `https://hearts-of-iron-4.smods.ru/?s={mod_id}`
+    *   **Cities: Skylines:** `https://smods.ru/?s={mod_id}`
 
-3.  **Run the script:**
-    ```bash
-    python mod_harvester.py --app_id "394360" --profile "/home/stavros/.mozilla/firefox/xxxxxxxx.SeleniumBot" --file "hoi4_mods.txt" --output "HOI4_Mods"
-    ```
+### Step 2: Run the Script
+
+Provide the arguments in your terminal.
+
+**Example for Hearts of Iron IV:**
+```bash
+python mod_harvester.py --base_url "https://hearts-of-iron-4.smods.ru/?s={mod_id}" --app_id "394360" --profile "/path/to/your/profile" --file "hoi4_mods.txt"
+```
 
 ### Platform Disclaimer
 This script was developed and tested on **Linux (Nobara/Fedora)**. It is provided as-is and has not been tested on Windows or macOS. Community contributions and forks to improve cross-platform compatibility are welcome.
