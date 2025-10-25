@@ -1,16 +1,14 @@
-# CK3 Skymods Harvester
+# Skymods Harvester: A Universal Steam Workshop Downloader
 
-A Python script to automate the downloading of Crusader Kings 3 mods from Skymods, designed for players with non-Steam versions of the game.
+A Python script to automate the downloading of mods and collections from Skymods for any supported game, designed for players with non-Steam versions.
 
 This tool uses Selenium to control a headless Firefox browser, methodically navigating the multi-page download process and handling interruptions like pop-ups and cookie banners automatically.
 
 ## What it Does
-- Reads a simple text file of Steam Workshop IDs.
-- For each ID, it constructs the correct Skymods URL.
-- Navigates through the Skymods -> File Host (Modsbase) redirect chain.
-- Intelligently handles cookie banners and closes ad-related pop-up tabs.
-- Waits for the JavaScript timer and clicks the download links.
-- Downloads all mods into a single, organized folder.
+- Reads a simple text file of Steam Workshop IDs for **any game**.
+- For each ID, it constructs the correct Skymods URL using your specified **App ID**.
+- Navigates the redirect chain, handles cookie banners, and closes ad tabs.
+- Waits for timers and clicks the download links, saving all files to an organized folder.
 
 ## Prerequisites
 - [Python 3](https://www.python.org/) (and `pip` for installing packages)
@@ -29,39 +27,35 @@ This tool uses Selenium to control a headless Firefox browser, methodically navi
     pip install -r requirements.txt
     ```
 
-3.  **(Highly Recommended) Create a dedicated Firefox Profile for ad-blocking:**
-    This allows the script to run with an ad-blocker, making it much more reliable.
-    -   Close Firefox, then run `firefox -P` in your terminal to open the Profile Manager.
-    -   Create a new profile (e.g., name it "SeleniumBot").
-    -   Launch Firefox with that new profile: `firefox -P SeleniumBot`.
-    -   Install your preferred ad-blocker (like **uBlock Origin**) from the Firefox Add-ons store.
-    -   Close Firefox.
-    -   Find the full path to this profile. You can find it by going to `about:profiles` in Firefox. It will look something like `/home/user/.mozilla/firefox/xxxxxxxx.SeleniumBot`.
+3.  **(Highly Recommended) Create a Firefox Profile with an Ad-blocker:**
+    This is essential for the script to run smoothly.
+    -   Run `firefox -P` in your terminal to open the Profile Manager.
+    -   Create a new profile (e.g., "SeleniumBot").
+    -   Launch Firefox with that profile: `firefox -P SeleniumBot`.
+    -   Install **uBlock Origin** from the Firefox Add-ons store.
+    -   Close Firefox and find the full path to this profile (e.g., `/home/user/.mozilla/firefox/xxxxxxxx.SeleniumBot`).
 
-4.  **Create your mod list file:**
-    -   Create a file in this directory named `mod_ids.txt`.
+4.  **Create your Mod ID list file:**
+    -   Create a file (e.g., `hoi4_mods.txt`).
     -   Paste the Steam Workshop IDs of the mods you want to download, one ID per line.
 
 ## How to Use
 
-Run the script from your terminal. You **must** provide the path to your Firefox profile for the best results.
+You must provide the game's **App ID** when running the script. You can find any game's App ID using sites like [SteamDB](https://steamdb.info/).
 
-**Example Usage (Linux):**
-```bash
-python mod_harvester.py --profile "/home/stavros/.mozilla/firefox/xxxxxxxx.SeleniumBot"
-```
+### Example: Downloading a Hearts of Iron IV Mod Collection
 
-### Command-Line Options:
+1.  **Find the App ID:** Search for "Hearts of Iron IV" on SteamDB. The App ID is **394360**.
 
--   `--profile "PATH"`: **(Required for best results)** The full, absolute path to your Firefox profile directory.
--   `--file "FILENAME"`: Use a different file for your mod IDs (default is `mod_ids.txt`).
--   `--output "FOLDERNAME"`: Specify a different folder to download the mods into (default is `CK3_Mod_Downloads`).
+2.  **Get the Mod IDs:** Go to a Workshop collection (like the "Road to 56" collection you found). Use a tool like [steamworkshopdownloader.io](https://steamworkshopdownloader.io/) to paste the collection URL. It will generate `workshop_download_item` commands for all mods. Copy just the final number (the Workshop ID) for each mod into your `hoi4_mods.txt` file.
 
-## Troubleshooting
+3.  **Run the script:**
+    ```bash
+    python mod_harvester.py --app_id "394360" --profile "/home/stavros/.mozilla/firefox/xxxxxxxx.SeleniumBot" --file "hoi4_mods.txt" --output "HOI4_Mods"
+    ```
 
-- **`WebDriverException: Message: Process unexpectedly closed with status 11`**: This often means there's a conflict between Selenium/geckodriver and your system's display server (like Wayland). Try running the script in a `X11` or `Xorg` session instead of Wayland.
-- **`ElementNotInteractableException`**: A pop-up or another element is blocking the button. Ensure your Firefox profile has a working ad-blocker.
-- **`NoSuchElementException`**: The script can't find a button or link. The website's layout has probably changed. This script may need to be updated.
+### Platform Disclaimer
+This script was developed and tested on **Linux (Nobara/Fedora)**. It is provided as-is and has not been tested on Windows or macOS. Community contributions and forks to improve cross-platform compatibility are welcome.
 
-## Disclaimer
-This script was designed for a specific workflow and may break if the target websites change their layout. It is provided as-is under the MIT License. Please support the mod authors on the Steam Workshop if you can!
+### License
+This project is licensed under the MIT License.
