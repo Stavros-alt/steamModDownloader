@@ -17,7 +17,7 @@ This script uses Selenium to control a headless Firefox browser, navigating thro
 ## Setup
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/Stavros-alt/modHarvester.git
+    git clone https://github.com/Stavros-alt/steamModDownloader.git
     cd your-repo-name
     ```
 2.  **Install Python dependencies:**
