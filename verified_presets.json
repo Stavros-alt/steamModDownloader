@@ -1,0 +1,78 @@
+{
+    "Total War: WARHAMMER III": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Stellaris": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Darkest Dungeon": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Stellaris Mods": {
+        "app_id": "",
+        "base_url": "https://stellaris.smods.ru/archives/{mod_id}"
+    },
+    "Hearts of Iron IV": {
+        "app_id": "",
+        "base_url": "https://hearts-of-iron-4.smods.ru/archives/{mod_id}"
+    },
+    "Cities: Skylines Mods": {
+        "app_id": "",
+        "base_url": "https://smods.ru/archives/{mod_id}"
+    },
+    "Sid Meier's Civilization VI": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Crusader Kings III": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Teardown": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "XCOM 2": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Hearts of Iron IV Mods": {
+        "app_id": "",
+        "base_url": "https://hearts-of-iron-4.smods.ru/archives/{mod_id}"
+    },
+    "Project Zomboid": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Darkest Dungeon\u00ae II": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Terraria": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Cities: Skylines": {
+        "app_id": "",
+        "base_url": "https://smods.ru/archives/{mod_id}"
+    },
+    "Europa Universalis IV": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Barotrauma": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "RimWorld": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    },
+    "Garry's Mod": {
+        "app_id": "",
+        "base_url": "https://catalogue.smods.ru/archives/{mod_id}"
+    }
+}
